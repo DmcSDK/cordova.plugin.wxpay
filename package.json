@@ -1,0 +1,25 @@
+{
+  "name": "cordova.plugin.wxpay.dmcbig",
+  "version": "1.0.0",
+  "description": "",
+  "cordova": {
+    "id": "cordova.plugin.wxpay.dmcbig",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "dmcBig",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

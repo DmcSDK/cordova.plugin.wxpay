@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova.plugin.wxpay.dmcbig" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>WXpay</name>
+    <js-module name="WXpay" src="www/WXpay.js">
+        <clobbers target="cordova.plugins.WXpay" />
+    </js-module>
+
+    <preference name="WXAPPID" />
+
+    <platform name="android">
+        <hook type="after_plugin_add" src="src/iu.js" />
+        <hook type="after_plugin_install" src="src/iu.js" />
+        <hook type="before_plugin_rm" src="src/iu.js" />
+        <hook type="before_plugin_uninstall" src="src/iu.js" />
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="WxpayPlugin">
+                <param name="android-package" value="com.dmc.wxpay.WxpayPlugin" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        <source-file src="src/android/WxpayPlugin.java" target-dir="src/com/dmc/wxpay" />
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        </config-file> 
+        <framework src="com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6" />       
+    </platform>
+
+    <platform name="ios">
+
+        <config-file parent="/*" target="config.xml">
+            <preference name="wxappid" value="$WXAPPID" />
+            <feature name="WxpayPlugin">
+                <param name="ios-package" value="WxpayPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+          <array>
+              <dict>
+                  <key>CFBundleURLName</key>
+                  <string>weixin</string>
+                  <key>CFBundleURLSchemes</key>
+                  <array>
+                      <string>$WXAPPID</string>
+                  </array>
+              </dict>
+          </array>
+        </config-file>
+
+        <source-file src="src/ios/WxpayPlugin.h" />
+        <source-file src="src/ios/WxpayPlugin.m" />
+         <!-- Wechat Official -->
+        <header-file src="src/ios/lib/WXApi.h" />
+        <header-file src="src/ios/lib/WXApiObject.h" />
+        <header-file src="src/ios/lib/WechatAuthSDK.h" />
+        <source-file src="src/ios/lib/libWeChatSDK.a" framework="true" />        
+        <!-- Other required frameworks -->
+        <framework src="libz.tbd" />
+        <framework src="libsqlite3.0.tbd" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Security.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="libstdc++.6.tbd" />
+    </platform>
+</plugin>
