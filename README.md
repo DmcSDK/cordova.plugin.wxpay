@@ -3,7 +3,7 @@
 cordova 微信支付插件
 
 ```npm
- cordova plugin add https://github.com/dmcBig/cordova.plugin.wxpay.git --variable WXAPPID=公众账号ID
+ cordova plugin add https://github.com/DmcSDK/cordova.plugin.wxpay.git --variable WXAPPID=公众账号ID
 ```
 
 ## Example
