@@ -28,7 +28,7 @@
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         </config-file> 
         <framework src="com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6" />       
     </platform>
